@@ -1,0 +1,8 @@
+[08-Mar-2018 09:25:18 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[08-Mar-2018 09:25:19 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[08-Mar-2018 09:25:20 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[08-Mar-2018 09:25:21 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[08-Mar-2018 09:25:21 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[08-Mar-2018 09:27:14 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/accnepal/acc/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[22-Mar-2018 11:15:42 UTC] PHP Warning:  require(/home/accnepal/public_html/../../acc/vendor/autoload.php): failed to open stream: No such file or directory in /home/accnepal/public_html/index.php on line 24
+[22-Mar-2018 11:15:42 UTC] PHP Fatal error:  require(): Failed opening required '/home/accnepal/public_html/../../acc/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/accnepal/public_html/index.php on line 24
