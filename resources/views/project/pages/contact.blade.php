@@ -16,10 +16,11 @@
                         <i class="icon_star_alt"></i>
                         <i class="icon_star_alt"></i>
                     </h4>
-                    <p>Pellentesque sed posuere nisi. Nunc nec looreet mauris.</p>
+                    <p></p>
                 </div>
                 <div class="col-sm-offset-2 col-md-8 col-sm-8  col-xs-12">
-                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form method="post" action="{{route('index')}}" enctype="multipart/form-data" class="form-horizontal">
+                        {{csrf_field()}}
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" name="name" value="" id="input-name" class="form-control" placeholder="Name *"/>

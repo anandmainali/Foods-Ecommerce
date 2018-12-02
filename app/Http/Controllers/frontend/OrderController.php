@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderProduct;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,6 +61,7 @@ class OrderController extends Controller
             ]);
         }
         Cart::destroy();
+        Toastr::success('Order Completed. Thank You!! :)','Success');
         return redirect('/confirmation');
 
     }

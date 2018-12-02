@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
+use Brian2694\Toastr\Facades\Toastr;
 class UserController extends Controller
 {
     /**
@@ -69,7 +70,8 @@ class UserController extends Controller
             $data['image'] = $name;
         }
         User::create($data);
-        return redirect()->route('user.index')->with('success','User is successfully created.');
+        Toastr::success('User Successfully Created :)','Success');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -134,7 +136,8 @@ class UserController extends Controller
         }    
         if ($request->filled('password')) $data['password'] = bcrypt($request->input('password'));    
         $user->update($data);
-        return redirect()->route('user.index')->with('success','User successfully updated.');
+        Toastr::success('User Successfully Updated :)','Success');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -147,9 +150,10 @@ class UserController extends Controller
     {
         //
         $users = User::findOrFail($id);
-        unlink(public_path().$users->image);
+        /*unlink(public_path().$users->image);*/
         $users->delete($users);
-        return redirect()->back()->with('success','User successfully deleted.');
+        Toastr::success('User Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 
 

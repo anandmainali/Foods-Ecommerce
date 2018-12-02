@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\HappyCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Brian2694\Toastr\Facades\Toastr;
 class HappyCustomerController extends Controller
 {
     /**
@@ -54,7 +55,8 @@ class HappyCustomerController extends Controller
         $data['photo'] = $name;
         }
         HappyCustomer::create($data);        
-        return redirect()->route('customer.index')->with('success','Comment successfully added.');
+        Toastr::success('Customer Successfully Created :)','Success');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -111,7 +113,8 @@ class HappyCustomerController extends Controller
         $data['photo'] = $name;
         }       
         $customer->update($data);        
-        return redirect()->route('customer.index')->with('success','Comment successfully updated.');
+        Toastr::success('Customer Successfully Updated :)','Success');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -125,6 +128,7 @@ class HappyCustomerController extends Controller
         $customer = HappyCustomer::findOrFail($id);        
         $customer->delete($customer);
         file::delete(public_path().$customer->photo);
-        return redirect()->back()->with('success','Comment successfully deleted.');
+        Toastr::success('Customer Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

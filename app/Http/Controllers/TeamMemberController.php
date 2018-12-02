@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Brian2694\Toastr\Facades\Toastr;
 class TeamMemberController extends Controller
 {
     /**
@@ -57,7 +58,8 @@ class TeamMemberController extends Controller
         $file->move('Images/Members',$name);        
         $data['photo'] = $name;
         TeamMember::create($data);        
-        return redirect()->route('member.index')->with('success','Member successfully added.');
+        Toastr::success('Member Successfully Created :)','Success');
+        return redirect()->route('member.index');
 
     }
 
@@ -115,8 +117,9 @@ class TeamMemberController extends Controller
         file::delete(public_path().$member->photo);        
         $data['photo'] = $name;
         }       
-        $member->update($data);        
-        return redirect()->route('member.index')->with('success','Member successfully updated.');
+        $member->update($data);
+        Toastr::success('Member Successfully Updated :)','Success');        
+        return redirect()->route('member.index');
     }
 
     /**
@@ -131,6 +134,7 @@ class TeamMemberController extends Controller
         $member = TeamMember::findOrFail($id);
         $member->delete($member);
         file::delete(public_path().$member->photo);
-        return redirect()->back()->with('success','Member successfully deleted.');
+        Toastr::success('Member Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

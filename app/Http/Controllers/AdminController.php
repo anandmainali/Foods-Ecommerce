@@ -10,6 +10,7 @@ use App\infos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
@@ -52,11 +53,8 @@ class AdminController extends Controller
         }        
          $infos->update($data);
         } 
-        $notification = array(
-            'message' => 'Successfully Updated!', 
-            'alert-type' => 'success'
-        );  
-    	 return redirect()->back()->with($notification);
+        Toastr::success('Info Successfully Updated :)','Success');  
+    	 return redirect()->back();
         }
 
 
@@ -89,7 +87,8 @@ class AdminController extends Controller
             $data['image'] = $name;
             }    
             $user->update($data);
-            return redirect()->back()->with('success','User successfully updated.');
+            Toastr::success('User Successfully Updated :)','Success');
+            return redirect()->back();
     }
 
     public function updatePassword(Request $request,$id){
@@ -103,10 +102,12 @@ class AdminController extends Controller
             'password' => bcrypt($request->newPassword),            
         ];
        if(!Hash::check($request->oldPassword, $user->password)){
-         return back()->with('error','The specified password does not match the database password');
+        Toastr::error('The specified password does not match the database password','Error');
+         return back();
     }else{
        $user->update($data);
-         return redirect()->back()->with('success','Password successfully updated.');
+       Toastr::success('Password Successfully Updated :)','Success');
+         return redirect()->back();
     } 
     }
 }

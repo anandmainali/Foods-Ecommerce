@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class frontController extends Controller

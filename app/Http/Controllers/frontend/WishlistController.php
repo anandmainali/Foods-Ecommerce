@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Wishlist;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller
@@ -20,6 +21,7 @@ class WishlistController extends Controller
     	];
     	
     	Wishlist::create($datas);
+        Toastr::success('Added to Wishlist. :)','Success');
     	return redirect()->back();
     }
 
@@ -27,6 +29,7 @@ class WishlistController extends Controller
     {
     	$item = Wishlist::findOrFail($id);
     	$item->delete($item);
+        Toastr::success('Removed from Wishlist. :)','Success');
     	return redirect()->back();
 
     }

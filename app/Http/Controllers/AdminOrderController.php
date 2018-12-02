@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderProduct;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
@@ -81,7 +82,8 @@ class AdminOrderController extends Controller
             $shipping_status = false;
         }
         $order->update(['shipping_status'=>$shipping_status]);
-        return redirect('/admin/order')->with('success','Order Successfully updated.');
+        Toastr::success('Order Successfully Updated :)','Success');
+        return redirect('/admin/order');
     }
 
     /**
@@ -94,6 +96,7 @@ class AdminOrderController extends Controller
     {
         $order = Order::findOrFail($id);
         $order->delete($order);
-        return redirect()->back()->with('success','Order Successfully deleted.');
+        Toastr::success('Order Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Subcategory;
 use Cocur\Slugify\Slugify;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
@@ -50,7 +51,8 @@ class SubcategoryController extends Controller
         $slugify = new Slugify();
         $data['slug'] = $slugify->slugify($request->name);
         Subcategory::create($data);
-        return redirect()->route('subcategory.index')->with('success','Subcategory Sucessfully Added.');
+        Toastr::success('SubCategory Successfully Created :)','Success');
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -98,7 +100,8 @@ class SubcategoryController extends Controller
         $slugify = new Slugify();
         $data['slug'] = $slugify->slugify($request->name);
         $subcategory->update($data);
-        return redirect()->route('subcategory.index')->with('success','Subcategory Sucessfully Added.');
+        Toastr::success('SubCategory Successfully Updated :)','Success');
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -111,6 +114,7 @@ class SubcategoryController extends Controller
     {
         $item = Subcategory::findOrFail($id);
         $item->delete($item);
-        return redirect()->back()->with('success','Sucessfully Deleted.');
+        Toastr::success('SubCategory Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

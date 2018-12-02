@@ -1,2 +1,4 @@
-# e-commerce-using-laravel
-organic vegetable e-commerce site
+
+# Foods-Ecommerce
+
+Organic Foods E-commerce Site

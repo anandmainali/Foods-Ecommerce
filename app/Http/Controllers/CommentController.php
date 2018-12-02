@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -38,6 +39,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        dd('hello');
         //
         $this->validate($request, [
             'name' => 'required|max:50',
@@ -46,7 +48,8 @@ class CommentController extends Controller
             'message' => 'required',
         ]);
         Comment::create($request->except('_token'));
-        return redirect()->back()->with('success','Your message is successfully submitted.');
+        Toastr::success('Your message is successfully submitted :)','Success');
+        return redirect()->back();
     }
 
     /**
@@ -94,7 +97,8 @@ class CommentController extends Controller
         //
         $comment = Comment::findOrFail($id);
     	$comment->delete();
-    	return redirect()->back()->with('success','Comment successfully deleted.');
+        Toastr::success('Comment Successfully Deleted :)','Success');
+    	return redirect()->back();
     }
 }
 

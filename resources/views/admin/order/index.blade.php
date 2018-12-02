@@ -1,5 +1,5 @@
 @extends('layouts.admin-master')
-@section('breadcrumb','Order List')
+@section('breadcrumb','All Orders')
 @section('content')
 
 <div class="card-body ">
@@ -42,12 +42,12 @@
 				</td>
 				<td style="width: 125px;">
 					<div style="float: left;">
-					<button type="button" data-toggle="modal" data-target="#exampleModalLong" class="btn btn-success btn-xs">
+					<button type="button" data-toggle="modal" data-target="#exampleModalLong{{$order->id}}" class="btn btn-success btn-xs">
 						<i class="fa fa-eye"></i>
 					</button>	
 					</div>			
 
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalLong{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -77,6 +77,13 @@
         			<td class="center">Rs.{{($product->quantity)*($product->product->newprice)}}</td> 
         		</tr>
         		@endforeach
+                <tr class="odd gradeX">
+                     <td class="center"></td>
+                    <td class="center"></td>
+                    <td class="center"></td>
+                    <td class="center"><b>Total:-</b></td>
+                    <td class="center">Rs.{{$order->total}}</td> 
+                </tr>
         	</tbody>
         </table>
       </div>
@@ -93,15 +100,25 @@
                                 <i class="fa fa-edit"></i>
                             </button>
                         </a>
-                    </div>					
-					<div style="float: right;">
-                        {!! Form::open(['method'=>'DELETE','action'=>['AdminOrderController@destroy',$order->id]])!!}
-                        {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit','class'=>'btn btn-danger btn-xs','return onClick'=>'confirm("Are you sure to delete?")'])!!}
-                        {!! Form::close()!!}
-                    </div>
+                    </div>	
+
+                    <button class="btn btn-danger btn-xs" type="button" onclick="deleteItem({{ $order->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+            <form id="delete-form-{{ $order->id }}" action="{{ route('order.destroy',$order->id) }}" method="POST" style="display: none;">
+                {!! method_field('delete') !!}
+                {!! csrf_field() !!}
+            </form>
+
+
+					
 				</td>
 			</tr>
 			@endforeach
+
+
+        
+
 		</tbody>
 		@else
         <tr>

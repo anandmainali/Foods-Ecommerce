@@ -1,5 +1,5 @@
     @extends('layouts.admin-master')
-    @section('breadcrumb','Profile')
+    @section('breadcrumb','User Profile')
     @section('content')
     <div class="card-body">  
         <div class="row">

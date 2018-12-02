@@ -1,15 +1,21 @@
 @extends('layouts.admin-master')
-@section('breadcrumb','Member List')
-@section('content')
 
-<div class="card-body ">
+@section('button')
+<br>
   <div class="row">
     <div class="col-md-6 col-sm-6 col-xs-6">
       <div class="btn-group">
         <a href="{{route('member.create')}}" class="btn btn-info" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
       </div>
     </div>
+  </div>
+  @endsection
 
+@section('breadcrumb','All Members')
+@section('content')
+
+<div class="card-body ">
+  <div class="row">
     <table class="table table-striped table-bordered table-hover table-checkable order-column valign-middle" id="example4">
       <thead>
 
@@ -43,11 +49,16 @@
               </button>
             </a>
           </div>
-          <div style="float: right;">
-            {!! Form::open(['method'=>'DELETE','action'=>['TeamMemberController@destroy',$member->id]])!!}
-            {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit','class'=>'btn btn-danger btn-xs','return onClick'=>'confirm("Are you sure to delete?")'])!!}
-            {!! Form::close()!!}
-          </div>
+
+          <button class="btn btn-danger btn-xs" type="button" onclick="deleteItem({{ $member->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+            <form id="delete-form-{{ $member->id }}" action="{{ route('member.destroy',$member->id) }}" method="POST" style="display: none;">
+                {!! method_field('delete') !!}
+          {!! csrf_field() !!}
+            </form>
+
+          
         </td>
       </tr>
       @endforeach

@@ -37,8 +37,9 @@
                                     {!! Form::select('utype', array('admin' => 'Admin', 'user' => 'User'),null,['class'=>'form-control']); !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('status','Status')!!}
-                                    {!! Form::select('status', array('1' => 'Enable', '0' => 'Disable'),null,['class'=>'form-control']); !!}
+                                  <!--   {!! Form::label('status','Status')!!} -->
+                                   <!--  {!! Form::select('status', array('1' => 'Enable', '0' => 'Disable'),null,['class'=>'form-control']); !!} -->
+                                    {{ Form::hidden('status', '1') }}
                                 </div>
 
                                 <div class="form-group">

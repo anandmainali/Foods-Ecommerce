@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Slider;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -45,9 +46,11 @@ class SliderController extends Controller
         if(!empty($file = $request->file('image'))){
         $name = time() . $file->getClientOriginalName();
         $file->move('Images/Slider',$name);
-         Slider::create(['image'=>$name]);        
+         Slider::create(['image'=>$name]);  
+         Toastr::success('Slider Successfully Created :)','Success');      
         }
-        return redirect()->route('slider.index')->with('success','Slider is successfully created.');      
+
+        return redirect()->route('slider.index');      
     }
 
     /**
@@ -96,7 +99,8 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);        
         $slider->delete($slider);
         unlink(public_path($slider->image));
-        return redirect()->back()->with('success','Slider is successfully deleted.');
+        Toastr::success('Slider Successfully Deleted :)','Success');
+        return redirect()->back();
 
     }
 }

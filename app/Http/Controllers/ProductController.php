@@ -5,6 +5,7 @@ use App\Category;
 use App\Product;
 use App\Subcategory;
 use Cocur\Slugify\Slugify;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -81,7 +82,8 @@ class ProductController extends Controller
         	'description' => $request->description
         ];
         Product::create($data);
-        return redirect()->route('product.index')->with('success','Product successfully created.');
+        Toastr::success('Product Successfully Created :)','Success');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -162,7 +164,8 @@ class ProductController extends Controller
             'description' => $request->description
         ];
         $product->update($data);
-        return redirect()->route('product.index')->with('success','Product successfully updated.');
+        Toastr::success('Product Successfully Updated :)','Success');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -176,6 +179,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);        
         $product->delete($product);
         unlink(public_path().$product->image);
-        return redirect()->back()->with('success','Product successfully deleted.');
+        Toastr::success('Product Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

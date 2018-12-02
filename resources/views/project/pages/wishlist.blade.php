@@ -6,7 +6,7 @@
     <img src="{{URL::to('project/images/top-banner.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
     <div class="container">
         <div class="matter">
-            <h2><span>Organic</span> Cart</h2>
+            <h2><span>Organic</span> Wishlist</h2>
             <ul class="list-inline">
                 <li>
                     <a href="{{ route('index') }}">HOME</a>

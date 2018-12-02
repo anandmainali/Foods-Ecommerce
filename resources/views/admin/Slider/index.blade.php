@@ -1,16 +1,18 @@
 @extends('layouts.admin-master')
-@section('breadcrumb','Slider List')
+@section('button')
+<br>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="btn-group">
+        <a href="{{route('slider.create')}}" class="btn btn-info" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+      </div>
+    </div>
+  </div>
+  @endsection
+@section('breadcrumb','All Sliders')
 @section('content')
 
                     <div class="card-body ">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <div class="btn-group">
-                                    <a href="{{route('slider.create')}}" class="btn btn-info" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
-                                </div>
-                            </div>                                                      
-                        </div>
-
                         <table class="table table-striped table-bordered table-hover table-checkable order-column valign-middle" id="example4">
                             <thead>
 
@@ -28,9 +30,13 @@
                                 <td>{{++$key}}</td>                               
                                 <td><img src="{{$slider->image}}" height="100px" alt=""></td>
                                 <td style="width: 80px;">
-                                    {!! Form::open(['method'=>'DELETE','action'=>['SliderController@destroy',$slider->id]])!!}
-                                    {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs','onClick'=>'return confirm("Are you sure to delete?")'])  }}
-                                    {!! Form::close()!!}
+                                    <button class="btn btn-danger btn-xs" type="button" onclick="deleteItem({{ $slider->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+            <form id="delete-form-{{ $slider->id }}" action="{{ route('slider.destroy',$slider->id) }}" method="POST" style="display: none;">
+                {!! method_field('delete') !!}
+                {!! csrf_field() !!}
+            </form>
 
                                 </td>
                             </tr>

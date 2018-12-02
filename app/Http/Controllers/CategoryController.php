@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Cocur\Slugify\Slugify;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -42,7 +43,8 @@ class CategoryController extends Controller
         $slugify = new Slugify();
         $data['slug'] = $slugify->slugify($request->name);
         Category::create($data);
-        return redirect()->route('category.index')->with('success','Successfully Added.');
+        Toastr::success('Category Successfully Created :)','Success');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -81,7 +83,8 @@ class CategoryController extends Controller
         $slugify = new Slugify();
         $data['slug'] = $slugify->slugify($request->name);
         Category::findOrFail($id)->update($data);
-        return redirect()->route('category.index')->with('success','Successfully Updated.');
+        Toastr::success('Category Successfully Updated :)','Success');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -93,6 +96,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
-        return redirect()->back()->with('success','Successfully Deleted.');
+        Toastr::success('Category Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

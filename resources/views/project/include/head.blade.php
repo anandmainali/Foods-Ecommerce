@@ -8,6 +8,10 @@
 <title>Home</title>
 <!-- Bootstrap stylesheet -->
 <link href="{{URL::to('/project/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+
+<!-- Toaster -->
+    <link href="{{asset('bootstrap/css/toaster.min.css')}}" rel="stylesheet">
+    
 <!-- crousel css -->
 <link href="{{URL::to('/project/js/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css" />
 <!--bootstrap select-->

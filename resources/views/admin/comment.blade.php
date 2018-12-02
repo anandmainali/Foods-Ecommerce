@@ -1,5 +1,5 @@
 @extends('layouts.admin-master')
-@section('breadcrumb','Comment List')
+@section('breadcrumb','All Comments')
 @section('content')
 
           <div class="card-body ">

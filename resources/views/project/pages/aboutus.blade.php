@@ -33,7 +33,7 @@
                         <i class="icon_star_alt"></i>
                         <i class="icon_star_alt"></i>
                     </h4>
-                    <p>Pellentesque sed posuere nisi. Nunc nec looreet mauris. Etiam valutpat ligula eu lacus varius scelerisque. Morbi fringilla euismod semper.</p>
+                    <p></p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
                     <p class="des">We hear and see organic all around us these days. Some of us abide by a 100% purely organic lifestyle, while others may not believe that it is absolutely necessary. Eating organic is very important for many reasons, from keeping our bodies healthy to protection for the animals and our planet.</p>
@@ -96,7 +96,7 @@
                         <i class="icon_star_alt"></i>
                         <i class="icon_star_alt"></i>
                     </h4>
-                    <p>Pellentesque sed posuere nisi. Nunc nec looreet mauris. Etiam valutpat ligula eu lacus</p>
+                    <p></p>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                     <div class="box">
@@ -104,17 +104,17 @@
                             <li>
                                 <img src="{{URL::to('project/images/about/icon1.png')}}" class="img-responsive" alt="img" title="img">
                                 <h3>Quality</h3>
-                                <p>In pharetra hendrerit nulla, non pretium sem auctor ut. Praesent auctor, odio ac scelerisque sagittis, enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea repudiandae consequatur facilis at illum tempore pariatur magnam necessitatibus sequi nobis provident sapiente nihil aliquam dolorum sit, reprehenderit illo! Dignissimos, labore.</p>
                             </li>
                             <li>
                                 <img src="{{URL::to('project/images/about/icon2.png')}}" class="img-responsive" alt="img" title="img">
                                 <h3>Healthy</h3>
-                                <p>In pharetra hendrerit nulla, non pretium sem auctor ut. Praesent auctor, odio ac scelerisque sagittis, enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea repudiandae consequatur facilis at illum tempore pariatur magnam necessitatibus sequi nobis provident sapiente nihil aliquam dolorum sit, reprehenderit illo! Dignissimos, labore.</p>
                             </li>
                             <li>
                                 <img src="{{URL::to('project/images/about/icon3.png')}}" class="img-responsive" alt="img" title="img">
                                 <h3>Fresh</h3>
-                                <p>In pharetra hendrerit nulla, non pretium sem auctor ut. Praesent auctor, odio ac scelerisque sagittis, enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea repudiandae consequatur facilis at illum tempore pariatur magnam necessitatibus sequi nobis provident sapiente nihil aliquam dolorum sit, reprehenderit illo! Dignissimos, labore.</p>
                             </li>
                         </ul>
                         <img src="{{URL::to('project/images/about/medium-banner.png')}}" class="img-responsive vegbanner" alt="img" title="img">
@@ -141,7 +141,7 @@
                         <i class="icon_star_alt"></i>
                         <i class="icon_star_alt"></i>
                     </h4>
-                    <p>Pellentesque sed posuere nisi. Nunc nec looreet mauris. Etiam valutpat ligula eu lacus varius scelerisque. Morbi fringilla euismod semper.</p>
+                    <p></p>
                 </div>
 
                 @foreach($members as $member)

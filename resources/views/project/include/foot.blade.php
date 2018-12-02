@@ -37,6 +37,10 @@
 <script src="{{URL::to('/project/js/internal.js')}}"></script>
 <!-- owlcarousel js -->
 <script src="{{URL::to('/project/js/owl-carousel/owl.carousel.min.js')}}"></script>
+
+<!-- Toaster -->
+    <script src="{{asset('bootstrap/js/toaster.min.js')}}"></script>
+        {!! Toastr::message() !!}
 </body>
 
 </html>

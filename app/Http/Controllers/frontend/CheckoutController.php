@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
-
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller

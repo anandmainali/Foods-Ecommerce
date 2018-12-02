@@ -17,6 +17,12 @@
     <link href="{{asset('bootstrap/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.css" rel="stylesheet">
     
+    <!-- Sweet Alert -->
+    <link href="{{asset('bootstrap/css/sweetalert2.min.css')}}" rel="stylesheet">
+    
+    <!-- Toaster -->
+    <link href="{{asset('bootstrap/css/toaster.min.css')}}" rel="stylesheet">
+
     <!--bootstrap -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
@@ -25,6 +31,7 @@
     <!-- data tables -->
     <link href="{{asset('bootstrap/js/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
     
 
     <!-- Theme Styles -->
@@ -234,28 +241,27 @@
                         <div class="page-bar">
                             <div class="page-title-breadcrumb">
                                 <div class=" pull-left">
-                                    <div class="page-title">@yield('breadcrumb')</div>
-                                    @if(session()->has('success'))
-                                    <div class="alert alert-success"><i class="fa fa-info-circle" aria-hidden="true"></i> {{session()->get('success')}}</div>
-                                    @endif
-                                     @foreach($errors->all() as $error)
-                                <div class="alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{$error}}</div>
-                                @endforeach
+                                    <div class="page-title"></div>
+                                    
                                 </div>
+
                                 <ol class="breadcrumb page-breadcrumb pull-right">
                                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('admin') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
                                     </li>
                                     
                                     <li class="active">@yield('breadcrumb')</li>
                                 </ol>
+
                             </div>
+                            @yield('button')
                         </div>
+
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card card-topline-aqua">
                                     <div class="card-head">
-                                        <header></header>
+                                        <header>@yield('breadcrumb')</header>
                                         <div class="tools">
                                             <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                             <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -299,9 +305,63 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
         <script src="{{ asset('bootstrap/js/summernote/summernote.js') }} " type="text/javascript"></script>
         <!--  DataTables -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>        
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
         
+        @stack('js')
+
+        <!-- Sweet Alert 2 -->
+        <script src="{{asset('bootstrap/js/sweetalert2.min.js')}}"></script>
+        <script type="text/javascript">
+        function deleteItem(id) {
+            swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    swal(
+                        'Cancelled',
+                        'Your data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
+
+    <!-- Toaster -->
+    <script src="{{asset('bootstrap/js/toaster.min.js')}}"></script>
+        {!! Toastr::message() !!}
+    <script>
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+              toastr.error('{{ $error }}','Error',{
+                  closeButton:true,
+                  progressBar:true,
+               });
+        @endforeach
+    @endif
+</script>   
+    
+    <!-- To include js file -->
+    @stack('js')
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#about').summernote();          
@@ -319,6 +379,7 @@
                 $('#example4').DataTable();
             } );
         </script>
+        
         <script>
             $("[name='featured']").bootstrapSwitch();
             $("[name='shipping_status']").bootstrapSwitch();
