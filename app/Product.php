@@ -23,7 +23,7 @@ class Product extends Model
         ],*/
     ];
 
-    protected $location = '/Images/Products/';
+    protected $location = 'http://localhost/Foods-Ecommerce/public/Images/Products/';
 
     public function getImageAttribute($image){
         return $this->location.$image;

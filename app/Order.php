@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $fillable = ['user_id','phone','address','note','total','shipping_status'];
 
-   protected $location = '/Images/Products/';
+   protected $location = 'http://localhost/Foods-Ecommerce/public/Images/Products/';
 
     public function getImageAttribute($image){
     	return $this->location.$image;

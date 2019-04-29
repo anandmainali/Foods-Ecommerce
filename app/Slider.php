@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Slider extends Model
 {
     //
-    protected $path = '/Images/Slider/';
+    protected $path = 'http://localhost/Foods-Ecommerce/public/Images/Slider/';
     protected $fillable = [
     	'image',
     ];

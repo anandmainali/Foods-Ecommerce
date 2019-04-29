@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    protected $location = '/Images/Products/';
+    protected $location = 'http://localhost/Foods-Ecommerce/public/Images/Products/';
 
     public function getImageAttribute($image)
     {

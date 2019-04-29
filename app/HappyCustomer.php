@@ -12,7 +12,7 @@ class HappyCustomer extends Model
     	'photo',
     	'about',
     ];
- protected $location = "/Images/Customers/";
+ protected $location = "http://localhost/Foods-Ecommerce/public/Images/Customers/";
 
     public function getPhotoAttribute($photo){       
     	return $this->location.$photo;

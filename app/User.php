@@ -26,7 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    protected $location = '/UserImage/';
+    protected $location = 'http://localhost/Foods-Ecommerce/public/UserImage/';
 
     public function getImageAttribute($image){
         if($image){
