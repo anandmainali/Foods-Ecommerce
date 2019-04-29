@@ -13,7 +13,7 @@ class TeamMember extends Model
     	'photo',
     	'about',
     ];
-    protected $location = "/Images/Members/";
+    protected $location = "http://localhost/Foods-Ecommerce/public/Images/Members/";
 
     public function getPhotoAttribute($photo){       
     	return $this->location.$photo;
