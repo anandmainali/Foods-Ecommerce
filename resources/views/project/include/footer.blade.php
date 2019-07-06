@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
-                <img src="{{$info->logo}}" class="img-responsive" title="logo" alt="logo">
-                <p>{!!$info->about!!}</p>
+                <img src="{{ $info->logo_link }}" class="img-responsive" title="{{ $info->name }}" alt="{{ $info->name }}">
+                <p class="info-about">{!!$info->about!!}</p>
                 <ul class="list-unstyled contact">
                     <li>
                         <a href="{{route('contact')}}">
@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                    <p>© Copyright 2017, <span>{{$info->name}}</span>  All Rights Reserved.</p>
+                    <p>© Copyright {{ date('Y') }}, <span>{{$info->name}}</span>  All Rights Reserved.</p>
                 </div>
 
             </div>

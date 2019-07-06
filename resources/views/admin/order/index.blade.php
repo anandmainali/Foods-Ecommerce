@@ -23,8 +23,8 @@
 			@foreach($orders as $key=>$order)
 			<tr class="odd gradeX">
 				<td class="center">{{++$key}}</td>
-				<td>{{$order->user->uname}}</td>
-				<td class="center">{{$order->user->email}}</td>
+				<td>{{$order->user ? $order->user->uname : ''}}</td>
+				<td class="center">{{$order->user ? $order->user->email : ''}}</td>
 				<td>{{$order->phone}}</td>
 				 <td>{{$order->address}}</td> 
 				<td class="center">{{$order->total}}</td>

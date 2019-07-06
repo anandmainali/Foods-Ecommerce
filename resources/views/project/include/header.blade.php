@@ -103,7 +103,7 @@
             <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
                 <div id="logo" >
                     <a href="{{route('index')}}">
-                        <img class="img-responsive" src="{{$info->logo}}"  alt="logo" title="logo" />
+                        <img class="img-responsive" src="{{ $info->logo_link }}"  alt="{{ $info->name }}" title="{{ $info->name }}" />
                     </a>
                 </div>
             </div>

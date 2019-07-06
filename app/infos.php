@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class infos extends Model
 {
     //
-    protected $fillable = ['name','address','phone','email','logo','about'];
+    protected $fillable = ['name', 'address', 'phone', 'email', 'logo', 'about'];
 
-    protected $location = '/Images/logo/';
+    protected $appends = ['logo_link'];
 
-    public function getLogoAttribute($image){
-    	return $this->location.$image;
+    public function getLogoLinkAttribute()
+    {
+        return $this->logo ? '/Images/logo/' . $this->logo : asset('Images/logo.png');
     }
 }

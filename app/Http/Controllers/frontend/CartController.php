@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers\frontend;
+
 use App\Http\Controllers\Controller;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -38,8 +39,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id,$request->name,$request->qty,$request->newprice)->associate('App\Product');
-        Toastr::success('Added to Cart. :)','Success');
+        Cart::add($request->id, $request->name, $request->qty, $request->newprice)->associate('App\Product');
+        Toastr::success('Added to Cart. :)', 'Success');
         return redirect()->back();
     }
 
@@ -75,11 +76,11 @@ class CartController extends Controller
     public function update(Request $request)
     {
 
-       $qty = $request->qty;
-       $row = $request->id;
-       $data = Cart::update($row, $qty);
-      
-return response()->json($data);
+        $qty = $request->qty;
+        $row = $request->id;
+        $data = Cart::update($row, $qty);
+
+        return response()->json($data);
     }
 
     /**
@@ -92,13 +93,14 @@ return response()->json($data);
     {
 
         Cart::destroy();
-        Toastr::success('Cart is destroyed. :)','Success');
+        Toastr::success('Cart is destroyed. :)', 'Success');
         return redirect()->back();
     }
 
-    public function remove($id){
+    public function remove($id)
+    {
         Cart::remove($id);
-        Toastr::success('Removed from Cart. :)','Success');
+        Toastr::success('Removed from Cart. :)', 'Success');
         return redirect()->back();
     }
 }

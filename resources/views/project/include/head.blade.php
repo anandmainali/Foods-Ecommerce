@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from ocsolutions.co.in/html/organic_food/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 May 2018 16:31:24 GMT -->
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Home</title>
+<title>{{ $info->name }}</title>
 <!-- Bootstrap stylesheet -->
 <link href="{{URL::to('/project/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
